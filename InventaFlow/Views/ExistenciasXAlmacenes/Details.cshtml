@@ -1,0 +1,42 @@
+﻿@model SistemaInventario.Models.ExistenciasXAlmacenes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Existencias por Almacén</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Almacen")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Almacenes.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Articulo")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Articulos.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

@@ -1,0 +1,44 @@
+== Roles ==
+-Vendedor
+-Administrador
+-Almacenista
+
+
+== Permisos ==
+
+Vendedor:
+-Transacciones: C,R,U.
+-Existencia x Almacenes: R.
+-Articulos: R.
+
+Almacenista tiene acceso a:
+-Existencia x Almacenes: C,R,U.
+-Articulos: R.
+-Tipos Inventarios: R.
+-Almacenes: R.
+
+Adminitrador: CRUD Completo.
+
+Leyenda: C(Create), R(Read), U(Update), D(Delete)
+
+
+== Usuarios de Prueba == 
+Usuarios de Prueba
+
+Usuario: vendedorsi@gmail.com
+Pass: Unapec12345Aa!
+Rol/es: Vendedor
+
+Usuario: almacensi@gmail.com
+Pass: Unapec12345Aa!
+Rol/es: Almacenista
+
+Usuario: adminsi@gmail.com
+Pass: Unapec12345Aa!
+Rol/es: Administrador
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+﻿@model SistemaInventario.Models.ExistenciasXAlmacenes
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Esta seguro/a que desea eliminar?</h3>
+<div>
+    <h4>Existencias por Almacén</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Almacen")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Almacenes.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Articulo")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Articulos.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>
