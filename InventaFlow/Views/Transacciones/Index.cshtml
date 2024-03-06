@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SistemaInventario.Models.Transacciones>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Transacciones</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+    @Html.ActionLink("Exporta a Excel", "exportaExcel")
+</p>
+
+<form method="get">
+    <div class="form-group">
+        <div class="">
+            <div class="row">
+                <div class="col-xs-8 col-sm-10 col-md-10 col-lg-10">
+                    <input class="form-control" style="max-width: 100%" type="text" id="Criterio" name="Criterio" placeholder="Criterio de busqueda...." />
+                </div>
+                <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+                    <input class="form-control" style="width:100%" type="submit" id="cmdBuscar" value="Buscar" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Articulo")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoTrasaccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Monto)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Articulos.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoTrasaccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
