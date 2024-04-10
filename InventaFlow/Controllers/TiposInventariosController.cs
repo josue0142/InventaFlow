@@ -133,7 +133,7 @@ namespace SistemaInventario.Controllers
         public ActionResult exportaExcel()
         {
             string filename = "TiposInventarios.csv";
-            string filepath = @"c:\TipoInventario1\" + filename;
+            string filepath = @"c:\Inventario\TipoInventario\" + filename;
             StreamWriter sw = new StreamWriter(filepath);
             sw.WriteLine("sep=,"); //Separador en Excel 
             sw.WriteLine("Descripcion, Estado"); //Encabezado 

@@ -143,13 +143,13 @@ namespace SistemaInventario.Controllers
         public ActionResult exportaExcel()
         {
             string filename = "Transacciones.csv";
-            string filepath = @"c:\Transacciones1\" + filename;
+            string filepath = @"c:\Inventario\Transacciones\" + filename;
             System.IO.StreamWriter sw = new System.IO.StreamWriter(filepath);
             sw.WriteLine("sep=,"); //Separador en Excel 
-            sw.WriteLine("Tipo Transaccion, Fecha, Cantidad, Monto"); //Encabezado 
-            foreach (var i in db.Transacciones.ToList())
+            sw.WriteLine("Articulo, Tipo Transaccion, Fecha, Cantidad, Monto"); //Encabezado 
+            foreach (var i in db.Transacciones.Include("Articulos").ToList())
             {
-                sw.WriteLine(i.Articulos + "," + i.TipoTrasaccion + "," + i.Fecha + "," + i.Cantidad + "," + i.Monto);
+                sw.WriteLine(i.Articulos.Descripcion + "," + i.TipoTrasaccion + "," + i.Fecha + "," + i.Cantidad + "," + i.Monto);
             }
             sw.Close();
             byte[] filedata = System.IO.File.ReadAllBytes(filepath);

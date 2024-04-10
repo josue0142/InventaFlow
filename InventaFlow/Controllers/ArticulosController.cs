@@ -140,13 +140,13 @@ namespace SistemaInventario.Controllers
         public ActionResult exportaExcel()
         {
             string filename = "Articulos.csv";
-            string filepath = @"c:\Art1\" + filename;
+            string filepath = @"c:\Inventario\Articulo\" + filename;
             StreamWriter sw = new StreamWriter(filepath);
             sw.WriteLine("sep=,"); //Separador en Excel 
             sw.WriteLine("Tipos Inventarios,Descripcion,Existencia,Costo Unitario"); //Encabezado 
-            foreach (var i in db.Articulos.ToList())
+            foreach (var i in db.Articulos.Include("TiposInventarios").ToList())
             {
-                sw.WriteLine(i.TiposInventarios + "," + i.Descripcion + "," + i.Existencia + "," + i.CostoUnitario);
+                sw.WriteLine(i.TiposInventarios.Descripcion + "," + i.Descripcion + "," + i.Existencia + "," + i.CostoUnitario);
             }
             sw.Close();
             byte[] filedata = System.IO.File.ReadAllBytes(filepath);

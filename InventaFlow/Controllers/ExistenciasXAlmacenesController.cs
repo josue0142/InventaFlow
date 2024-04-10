@@ -142,13 +142,13 @@ namespace SistemaInventario.Controllers
         public ActionResult exportaExcel()
         {
             string filename = "ExistenciaXAlmacenes.csv";
-            string filepath = @"c:\ExistenciaXAlmacenes1\" + filename;
+            string filepath = @"c:\Inventario\ExistenciaXAlmacenes\" + filename;
             System.IO.StreamWriter sw = new System.IO.StreamWriter(filepath);
             sw.WriteLine("sep=,"); //Separador en Excel 
             sw.WriteLine("Almacenes, Articulos, Cantidad"); //Encabezado 
-            foreach (var i in db.ExistenciaXAlmacenes.ToList())
+            foreach (var i in db.ExistenciaXAlmacenes.Include(e => e.Almacenes).Include(e => e.Articulos).ToList())
             {
-                sw.WriteLine(i.Almacenes + "," + i.Articulos + "," + i.Cantidad);
+                sw.WriteLine(i.Almacenes.Descripcion + "," + i.Articulos.Descripcion + "," + i.Cantidad);
             }
             sw.Close();
             byte[] filedata = System.IO.File.ReadAllBytes(filepath);
